@@ -1,0 +1,82 @@
+[gd_scene load_steps=12 format=3 uid="uid://diugja7t7m18s"]
+
+[ext_resource type="Texture2D" uid="uid://ckli3lt31rnn6" path="res://Images/料理したくない日ってあるよね。そんな時に食べる最強飯見つけた。【#一条莉々華_hololive DEV_IS ReGLOSS】 1-41 screenshot.png" id="2_o4dve"]
+[ext_resource type="Texture2D" uid="uid://bhk733wd0vspl" path="res://Images/weiner.jpg" id="3_6t6ix"]
+[ext_resource type="Script" path="res://Scripts/FoodButton.gd" id="3_77o86"]
+[ext_resource type="Texture2D" uid="uid://d2k773cfl7etx" path="res://Images/Ichijou_Ririka_Full_Body_2.webp" id="3_rmqvn"]
+[ext_resource type="Texture2D" uid="uid://dmkc4uminmkgy" path="res://Images/prepared_weiner.jpg" id="5_p0ycy"]
+[ext_resource type="PackedScene" uid="uid://bqryt3bvwjgmy" path="res://Food/weiner.tscn" id="5_qdkex"]
+[ext_resource type="Script" path="res://Scripts/Bowl.gd" id="6_3dy5y"]
+
+[sub_resource type="Gradient" id="Gradient_ea5xk"]
+offsets = PackedFloat32Array(0, 0.994012, 1)
+colors = PackedColorArray(0.282353, 0.282353, 0.282353, 1, 0.282353, 0.282353, 0.282353, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_38btl"]
+gradient = SubResource("Gradient_ea5xk")
+
+[sub_resource type="Gradient" id="Gradient_437y7"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_voyso"]
+gradient = SubResource("Gradient_437y7")
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+editor_draw_limits = true
+
+[node name="Background" type="Sprite2D" parent="Camera2D"]
+position = Vector2(-65, -42)
+scale = Vector2(1.14352, 1.14352)
+texture = ExtResource("2_o4dve")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+position = Vector2(673, -69)
+scale = Vector2(4.14844, 1390.5)
+texture = SubResource("GradientTexture1D_38btl")
+
+[node name="GridContainer" type="GridContainer" parent="Node2D"]
+offset_left = 180.0
+offset_top = -478.0
+offset_right = 264.0
+offset_bottom = -438.0
+scale = Vector2(5.77639, 5.77639)
+columns = 3
+
+[node name="TextureButton" type="TextureButton" parent="Node2D/GridContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+texture_normal = ExtResource("3_6t6ix")
+ignore_texture_size = true
+stretch_mode = 4
+script = ExtResource("3_77o86")
+foodName = "Weiner"
+
+[node name="Weiner" parent="Node2D/GridContainer/TextureButton" instance=ExtResource("5_qdkex")]
+position = Vector2(-31.1613, 82.7506)
+scale = Vector2(0.173118, 0.173118)
+cookedImage1 = ExtResource("5_p0ycy")
+cookedImage2 = ExtResource("5_p0ycy")
+cookedImage3 = ExtResource("5_p0ycy")
+cookedImage4 = ExtResource("5_p0ycy")
+
+[node name="Ririka" type="Sprite2D" parent="."]
+position = Vector2(615, 964)
+scale = Vector2(1.62107, 1.62107)
+texture = ExtResource("3_rmqvn")
+
+[node name="Bowl" type="Node2D" parent="."]
+position = Vector2(-400, 0)
+script = ExtResource("6_3dy5y")
+
+[node name="BowlImage" type="Sprite2D" parent="Bowl"]
+scale = Vector2(3.14218, 781.875)
+texture = SubResource("GradientTexture1D_voyso")
+
+[connection signal="food_added" from="Node2D/GridContainer/TextureButton" to="Bowl" method="_on_food_added"]
+[connection signal="pressed" from="Node2D/GridContainer/TextureButton" to="Node2D/GridContainer/TextureButton" method="_on_pressed"]
+
+[editable path="Node2D/GridContainer/TextureButton/Weiner"]

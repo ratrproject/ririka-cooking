@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2fr12yjlr6gu"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_6p2xx"]
+
+[node name="PreparedFood" type="Sprite2D"]
+texture = SubResource("ImageTexture_6p2xx")
