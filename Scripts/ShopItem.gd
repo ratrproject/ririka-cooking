@@ -1,3 +1,7 @@
+#######################################
+###	Generic class for items in shop ###
+#######################################
+
 extends TextureButton
 
 signal shop_purchase
@@ -7,7 +11,7 @@ var purchased = false;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var inventory_node = get_node_or_null("/root/Node2D/Inventory/Inventory")
+	var inventory_node = get_node_or_null("/root/Base/Main/Inventory/Inventory")
 	if inventory_node != null:
 		self.shop_purchase.connect(inventory_node._on_food_added)
 

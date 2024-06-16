@@ -1,9 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://cvmrrmkcgae66"]
+[gd_scene load_steps=12 format=3 uid="uid://cvmrrmkcgae66"]
 
 [ext_resource type="Texture2D" uid="uid://ckli3lt31rnn6" path="res://Images/料理したくない日ってあるよね。そんな時に食べる最強飯見つけた。【#一条莉々華_hololive DEV_IS ReGLOSS】 1-41 screenshot.png" id="2_o4dve"]
 [ext_resource type="Script" path="res://Inventory.gd" id="2_svuwy"]
 [ext_resource type="Texture2D" uid="uid://d2k773cfl7etx" path="res://Images/Ichijou_Ririka_Full_Body_2.webp" id="3_rmqvn"]
+[ext_resource type="Script" path="res://Player.gd" id="4_axwrt"]
 [ext_resource type="Script" path="res://Scripts/Bowl.gd" id="6_3dy5y"]
+[ext_resource type="Script" path="res://DayResults.gd" id="7_lg1gy"]
 [ext_resource type="Script" path="res://Scripts/ShopMenu.gd" id="9_dv73i"]
 
 [sub_resource type="Gradient" id="Gradient_ea5xk"]
@@ -19,25 +21,27 @@ colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_voyso"]
 gradient = SubResource("Gradient_437y7")
 
-[node name="Node2D" type="Node2D"]
+[node name="Base" type="Node2D"]
 metadata/_edit_vertical_guides_ = [-3036.0]
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Main" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="Main"]
 editor_draw_limits = true
 
-[node name="Background" type="Sprite2D" parent="Camera2D"]
+[node name="Background" type="Sprite2D" parent="Main/Camera2D"]
 position = Vector2(-65, -42)
 scale = Vector2(1.14352, 1.14352)
 texture = ExtResource("2_o4dve")
 
-[node name="Inventory" type="Node2D" parent="."]
+[node name="Inventory" type="Node2D" parent="Main"]
 
-[node name="Sprite2D" type="Sprite2D" parent="Inventory"]
+[node name="Sprite2D" type="Sprite2D" parent="Main/Inventory"]
 position = Vector2(673, -69)
 scale = Vector2(4.14844, 1390.5)
 texture = SubResource("GradientTexture1D_38btl")
 
-[node name="Inventory" type="GridContainer" parent="Inventory"]
+[node name="Inventory" type="GridContainer" parent="Main/Inventory"]
 offset_left = 180.0
 offset_top = -478.0
 offset_right = 264.0
@@ -46,7 +50,27 @@ scale = Vector2(5.77639, 5.77639)
 columns = 3
 script = ExtResource("2_svuwy")
 
-[node name="EatButton" type="Button" parent="Inventory"]
+[node name="Ririka" type="Sprite2D" parent="Main"]
+position = Vector2(590, 995)
+scale = Vector2(1.62107, 1.62107)
+texture = ExtResource("3_rmqvn")
+script = ExtResource("4_axwrt")
+
+[node name="Bowl" type="Node2D" parent="Main"]
+position = Vector2(-400, 0)
+script = ExtResource("6_3dy5y")
+
+[node name="BowlImage" type="Sprite2D" parent="Main/Bowl"]
+scale = Vector2(3.14218, 781.875)
+texture = SubResource("GradientTexture1D_voyso")
+
+[node name="BowlContents" type="Control" parent="Main/Bowl"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="EatButton" type="Button" parent="Main"]
 offset_left = -580.0
 offset_top = 412.0
 offset_right = -249.0
@@ -54,7 +78,7 @@ offset_bottom = 492.0
 theme_override_font_sizes/font_size = 50
 text = "Eat"
 
-[node name="ShopButton" type="Button" parent="Inventory"]
+[node name="ShopButton" type="Button" parent="Main"]
 offset_left = -220.0
 offset_top = -492.0
 offset_right = 111.0
@@ -62,20 +86,7 @@ offset_bottom = -412.0
 theme_override_font_sizes/font_size = 50
 text = "Shop"
 
-[node name="Ririka" type="Sprite2D" parent="."]
-position = Vector2(590, 995)
-scale = Vector2(1.62107, 1.62107)
-texture = ExtResource("3_rmqvn")
-
-[node name="Bowl" type="Node2D" parent="."]
-position = Vector2(-400, 0)
-script = ExtResource("6_3dy5y")
-
-[node name="BowlImage" type="Sprite2D" parent="Bowl"]
-scale = Vector2(3.14218, 781.875)
-texture = SubResource("GradientTexture1D_voyso")
-
-[node name="Control" type="Control" parent="."]
+[node name="ShopMenu" type="Control" parent="."]
 visible = false
 layout_mode = 3
 anchors_preset = 0
@@ -83,7 +94,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("9_dv73i")
 
-[node name="ColorRect" type="ColorRect" parent="Control"]
+[node name="ColorRect" type="ColorRect" parent="ShopMenu"]
 clip_contents = true
 layout_mode = 0
 offset_left = -1263.0
@@ -92,7 +103,7 @@ offset_right = -1223.0
 offset_bottom = -531.0
 scale = Vector2(62.4061, 30.3733)
 
-[node name="Label" type="Label" parent="Control"]
+[node name="Label" type="Label" parent="ShopMenu"]
 layout_mode = 0
 offset_left = -268.0
 offset_top = -442.0
@@ -104,7 +115,7 @@ text = "SHOP"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ShopClose" type="Button" parent="Control"]
+[node name="ShopCloseButton" type="Button" parent="ShopMenu"]
 layout_mode = 0
 offset_left = -943.0
 offset_top = -471.0
@@ -113,7 +124,7 @@ offset_bottom = -391.0
 theme_override_font_sizes/font_size = 50
 text = "Back"
 
-[node name="Inventory" type="GridContainer" parent="Control"]
+[node name="Inventory" type="GridContainer" parent="ShopMenu"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 0
 offset_left = -878.0
@@ -126,5 +137,48 @@ theme_override_constants/v_separation = 15
 columns = 5
 script = ExtResource("9_dv73i")
 
-[connection signal="pressed" from="Inventory/ShopButton" to="Control" method="_open"]
-[connection signal="pressed" from="Control/ShopClose" to="Control" method="_close"]
+[node name="DayResults" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("7_lg1gy")
+
+[node name="ColorRect" type="ColorRect" parent="DayResults"]
+clip_contents = true
+layout_mode = 0
+offset_left = -1263.0
+offset_top = -571.0
+offset_right = -1223.0
+offset_bottom = -531.0
+scale = Vector2(62.4061, 30.3733)
+
+[node name="Label" type="Label" parent="DayResults"]
+layout_mode = 0
+offset_left = -482.0
+offset_top = -438.0
+offset_right = 383.0
+offset_bottom = -162.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 200
+text = "DAY END"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NewDayButton" type="Button" parent="DayResults"]
+layout_mode = 0
+offset_left = -177.0
+offset_top = 369.0
+offset_right = 154.0
+offset_bottom = 449.0
+theme_override_font_sizes/font_size = 50
+text = "Next Day"
+
+[connection signal="pressed" from="Main/EatButton" to="DayResults" method="_open"]
+[connection signal="pressed" from="Main/ShopButton" to="ShopMenu" method="_open"]
+[connection signal="pressed" from="ShopMenu/ShopCloseButton" to="ShopMenu" method="_close"]
+[connection signal="day_advanced" from="DayResults" to="Main/Ririka" method="_advance_day"]
+[connection signal="day_advanced" from="DayResults" to="Main/Bowl" method="_on_day_results_day_advanced"]
+[connection signal="day_advanced" from="DayResults" to="ShopMenu" method="_on_day_results_day_advanced"]
+[connection signal="pressed" from="DayResults/NewDayButton" to="DayResults" method="_close"]
