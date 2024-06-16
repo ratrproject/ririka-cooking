@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://diugja7t7m18s"]
+[gd_scene load_steps=13 format=3 uid="uid://cvmrrmkcgae66"]
 
 [ext_resource type="Texture2D" uid="uid://ckli3lt31rnn6" path="res://Images/料理したくない日ってあるよね。そんな時に食べる最強飯見つけた。【#一条莉々華_hololive DEV_IS ReGLOSS】 1-41 screenshot.png" id="2_o4dve"]
 [ext_resource type="Texture2D" uid="uid://bhk733wd0vspl" path="res://Images/weiner.jpg" id="3_6t6ix"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dmkc4uminmkgy" path="res://Images/prepared_weiner.jpg" id="5_p0ycy"]
 [ext_resource type="PackedScene" uid="uid://bqryt3bvwjgmy" path="res://Food/weiner.tscn" id="5_qdkex"]
 [ext_resource type="Script" path="res://Scripts/Bowl.gd" id="6_3dy5y"]
+[ext_resource type="Script" path="res://Scripts/ShopMenu.gd" id="9_dv73i"]
 
 [sub_resource type="Gradient" id="Gradient_ea5xk"]
 offsets = PackedFloat32Array(0, 0.994012, 1)
@@ -63,8 +64,24 @@ cookedImage2 = ExtResource("5_p0ycy")
 cookedImage3 = ExtResource("5_p0ycy")
 cookedImage4 = ExtResource("5_p0ycy")
 
+[node name="EatButton" type="Button" parent="Node2D"]
+offset_left = -580.0
+offset_top = 412.0
+offset_right = -249.0
+offset_bottom = 492.0
+theme_override_font_sizes/font_size = 50
+text = "Eat"
+
+[node name="ShopButton" type="Button" parent="Node2D"]
+offset_left = -220.0
+offset_top = -492.0
+offset_right = 111.0
+offset_bottom = -412.0
+theme_override_font_sizes/font_size = 50
+text = "Shop"
+
 [node name="Ririka" type="Sprite2D" parent="."]
-position = Vector2(615, 964)
+position = Vector2(590, 995)
 scale = Vector2(1.62107, 1.62107)
 texture = ExtResource("3_rmqvn")
 
@@ -76,7 +93,259 @@ script = ExtResource("6_3dy5y")
 scale = Vector2(3.14218, 781.875)
 texture = SubResource("GradientTexture1D_voyso")
 
+[node name="Control" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("9_dv73i")
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+clip_contents = true
+layout_mode = 0
+offset_left = -1263.0
+offset_top = -571.0
+offset_right = -1223.0
+offset_bottom = -531.0
+scale = Vector2(62.4061, 30.3733)
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = -268.0
+offset_top = -442.0
+offset_right = 272.0
+offset_bottom = -166.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 200
+text = "SHOP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ShopClose" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = -943.0
+offset_top = -471.0
+offset_right = -612.0
+offset_bottom = -391.0
+theme_override_font_sizes/font_size = 50
+text = "Back"
+
+[node name="GridContainer2" type="GridContainer" parent="Control"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 0
+offset_left = -878.0
+offset_top = -74.0
+offset_right = -578.0
+offset_bottom = 54.0
+scale = Vector2(5.77639, 5.77639)
+theme_override_constants/h_separation = 25
+theme_override_constants/v_separation = 15
+columns = 5
+
+[node name="TextureButton" type="TextureButton" parent="Control/GridContainer2"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture_normal = ExtResource("3_6t6ix")
+ignore_texture_size = true
+stretch_mode = 4
+script = ExtResource("3_77o86")
+foodName = "Weiner"
+
+[node name="Weiner" parent="Control/GridContainer2/TextureButton" instance=ExtResource("5_qdkex")]
+position = Vector2(-31.1613, 82.7506)
+scale = Vector2(0.173118, 0.173118)
+cookedImage1 = ExtResource("5_p0ycy")
+cookedImage2 = ExtResource("5_p0ycy")
+cookedImage3 = ExtResource("5_p0ycy")
+cookedImage4 = ExtResource("5_p0ycy")
+
+[node name="TextureButton2" type="TextureButton" parent="Control/GridContainer2"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture_normal = ExtResource("3_6t6ix")
+ignore_texture_size = true
+stretch_mode = 4
+script = ExtResource("3_77o86")
+foodName = "Weiner"
+
+[node name="Weiner" parent="Control/GridContainer2/TextureButton2" instance=ExtResource("5_qdkex")]
+position = Vector2(-31.1613, 82.7506)
+scale = Vector2(0.173118, 0.173118)
+cookedImage1 = ExtResource("5_p0ycy")
+cookedImage2 = ExtResource("5_p0ycy")
+cookedImage3 = ExtResource("5_p0ycy")
+cookedImage4 = ExtResource("5_p0ycy")
+
+[node name="TextureButton3" type="TextureButton" parent="Control/GridContainer2"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture_normal = ExtResource("3_6t6ix")
+ignore_texture_size = true
+stretch_mode = 4
+script = ExtResource("3_77o86")
+foodName = "Weiner"
+
+[node name="Weiner" parent="Control/GridContainer2/TextureButton3" instance=ExtResource("5_qdkex")]
+position = Vector2(-31.1613, 82.7506)
+scale = Vector2(0.173118, 0.173118)
+cookedImage1 = ExtResource("5_p0ycy")
+cookedImage2 = ExtResource("5_p0ycy")
+cookedImage3 = ExtResource("5_p0ycy")
+cookedImage4 = ExtResource("5_p0ycy")
+
+[node name="TextureButton4" type="TextureButton" parent="Control/GridContainer2"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture_normal = ExtResource("3_6t6ix")
+ignore_texture_size = true
+stretch_mode = 4
+script = ExtResource("3_77o86")
+foodName = "Weiner"
+
+[node name="Weiner" parent="Control/GridContainer2/TextureButton4" instance=ExtResource("5_qdkex")]
+position = Vector2(-31.1613, 82.7506)
+scale = Vector2(0.173118, 0.173118)
+cookedImage1 = ExtResource("5_p0ycy")
+cookedImage2 = ExtResource("5_p0ycy")
+cookedImage3 = ExtResource("5_p0ycy")
+cookedImage4 = ExtResource("5_p0ycy")
+
+[node name="TextureButton5" type="TextureButton" parent="Control/GridContainer2"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture_normal = ExtResource("3_6t6ix")
+ignore_texture_size = true
+stretch_mode = 4
+script = ExtResource("3_77o86")
+foodName = "Weiner"
+
+[node name="Weiner" parent="Control/GridContainer2/TextureButton5" instance=ExtResource("5_qdkex")]
+position = Vector2(-31.1613, 82.7506)
+scale = Vector2(0.173118, 0.173118)
+cookedImage1 = ExtResource("5_p0ycy")
+cookedImage2 = ExtResource("5_p0ycy")
+cookedImage3 = ExtResource("5_p0ycy")
+cookedImage4 = ExtResource("5_p0ycy")
+
+[node name="TextureButton6" type="TextureButton" parent="Control/GridContainer2"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture_normal = ExtResource("3_6t6ix")
+ignore_texture_size = true
+stretch_mode = 4
+script = ExtResource("3_77o86")
+foodName = "Weiner"
+
+[node name="Weiner" parent="Control/GridContainer2/TextureButton6" instance=ExtResource("5_qdkex")]
+position = Vector2(-31.1613, 82.7506)
+scale = Vector2(0.173118, 0.173118)
+cookedImage1 = ExtResource("5_p0ycy")
+cookedImage2 = ExtResource("5_p0ycy")
+cookedImage3 = ExtResource("5_p0ycy")
+cookedImage4 = ExtResource("5_p0ycy")
+
+[node name="TextureButton7" type="TextureButton" parent="Control/GridContainer2"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture_normal = ExtResource("3_6t6ix")
+ignore_texture_size = true
+stretch_mode = 4
+script = ExtResource("3_77o86")
+foodName = "Weiner"
+
+[node name="Weiner" parent="Control/GridContainer2/TextureButton7" instance=ExtResource("5_qdkex")]
+position = Vector2(-31.1613, 82.7506)
+scale = Vector2(0.173118, 0.173118)
+cookedImage1 = ExtResource("5_p0ycy")
+cookedImage2 = ExtResource("5_p0ycy")
+cookedImage3 = ExtResource("5_p0ycy")
+cookedImage4 = ExtResource("5_p0ycy")
+
+[node name="TextureButton8" type="TextureButton" parent="Control/GridContainer2"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture_normal = ExtResource("3_6t6ix")
+ignore_texture_size = true
+stretch_mode = 4
+script = ExtResource("3_77o86")
+foodName = "Weiner"
+
+[node name="Weiner" parent="Control/GridContainer2/TextureButton8" instance=ExtResource("5_qdkex")]
+position = Vector2(-31.1613, 82.7506)
+scale = Vector2(0.173118, 0.173118)
+cookedImage1 = ExtResource("5_p0ycy")
+cookedImage2 = ExtResource("5_p0ycy")
+cookedImage3 = ExtResource("5_p0ycy")
+cookedImage4 = ExtResource("5_p0ycy")
+
+[node name="TextureButton9" type="TextureButton" parent="Control/GridContainer2"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture_normal = ExtResource("3_6t6ix")
+ignore_texture_size = true
+stretch_mode = 4
+script = ExtResource("3_77o86")
+foodName = "Weiner"
+
+[node name="Weiner" parent="Control/GridContainer2/TextureButton9" instance=ExtResource("5_qdkex")]
+position = Vector2(-31.1613, 82.7506)
+scale = Vector2(0.173118, 0.173118)
+cookedImage1 = ExtResource("5_p0ycy")
+cookedImage2 = ExtResource("5_p0ycy")
+cookedImage3 = ExtResource("5_p0ycy")
+cookedImage4 = ExtResource("5_p0ycy")
+
+[node name="TextureButton10" type="TextureButton" parent="Control/GridContainer2"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture_normal = ExtResource("3_6t6ix")
+ignore_texture_size = true
+stretch_mode = 4
+script = ExtResource("3_77o86")
+foodName = "Weiner"
+
+[node name="Weiner" parent="Control/GridContainer2/TextureButton10" instance=ExtResource("5_qdkex")]
+position = Vector2(-31.1613, 82.7506)
+scale = Vector2(0.173118, 0.173118)
+cookedImage1 = ExtResource("5_p0ycy")
+cookedImage2 = ExtResource("5_p0ycy")
+cookedImage3 = ExtResource("5_p0ycy")
+cookedImage4 = ExtResource("5_p0ycy")
+
 [connection signal="food_added" from="Node2D/GridContainer/TextureButton" to="Bowl" method="_on_food_added"]
 [connection signal="pressed" from="Node2D/GridContainer/TextureButton" to="Node2D/GridContainer/TextureButton" method="_on_pressed"]
+[connection signal="pressed" from="Node2D/ShopButton" to="Control" method="_open"]
+[connection signal="pressed" from="Control/ShopClose" to="Control" method="_close"]
+[connection signal="food_added" from="Control/GridContainer2/TextureButton" to="Bowl" method="_on_food_added"]
+[connection signal="pressed" from="Control/GridContainer2/TextureButton" to="Control/GridContainer2/TextureButton" method="_on_pressed"]
+[connection signal="food_added" from="Control/GridContainer2/TextureButton2" to="Bowl" method="_on_food_added"]
+[connection signal="pressed" from="Control/GridContainer2/TextureButton2" to="Control/GridContainer2/TextureButton2" method="_on_pressed"]
+[connection signal="food_added" from="Control/GridContainer2/TextureButton3" to="Bowl" method="_on_food_added"]
+[connection signal="pressed" from="Control/GridContainer2/TextureButton3" to="Control/GridContainer2/TextureButton3" method="_on_pressed"]
+[connection signal="food_added" from="Control/GridContainer2/TextureButton4" to="Bowl" method="_on_food_added"]
+[connection signal="pressed" from="Control/GridContainer2/TextureButton4" to="Control/GridContainer2/TextureButton4" method="_on_pressed"]
+[connection signal="food_added" from="Control/GridContainer2/TextureButton5" to="Bowl" method="_on_food_added"]
+[connection signal="pressed" from="Control/GridContainer2/TextureButton5" to="Control/GridContainer2/TextureButton5" method="_on_pressed"]
+[connection signal="food_added" from="Control/GridContainer2/TextureButton6" to="Bowl" method="_on_food_added"]
+[connection signal="pressed" from="Control/GridContainer2/TextureButton6" to="Control/GridContainer2/TextureButton6" method="_on_pressed"]
+[connection signal="food_added" from="Control/GridContainer2/TextureButton7" to="Bowl" method="_on_food_added"]
+[connection signal="pressed" from="Control/GridContainer2/TextureButton7" to="Control/GridContainer2/TextureButton7" method="_on_pressed"]
+[connection signal="food_added" from="Control/GridContainer2/TextureButton8" to="Bowl" method="_on_food_added"]
+[connection signal="pressed" from="Control/GridContainer2/TextureButton8" to="Control/GridContainer2/TextureButton8" method="_on_pressed"]
+[connection signal="food_added" from="Control/GridContainer2/TextureButton9" to="Bowl" method="_on_food_added"]
+[connection signal="pressed" from="Control/GridContainer2/TextureButton9" to="Control/GridContainer2/TextureButton9" method="_on_pressed"]
+[connection signal="food_added" from="Control/GridContainer2/TextureButton10" to="Bowl" method="_on_food_added"]
+[connection signal="pressed" from="Control/GridContainer2/TextureButton10" to="Control/GridContainer2/TextureButton10" method="_on_pressed"]
 
 [editable path="Node2D/GridContainer/TextureButton/Weiner"]
+[editable path="Control/GridContainer2/TextureButton/Weiner"]
+[editable path="Control/GridContainer2/TextureButton2/Weiner"]
+[editable path="Control/GridContainer2/TextureButton3/Weiner"]
+[editable path="Control/GridContainer2/TextureButton4/Weiner"]
+[editable path="Control/GridContainer2/TextureButton5/Weiner"]
+[editable path="Control/GridContainer2/TextureButton6/Weiner"]
+[editable path="Control/GridContainer2/TextureButton7/Weiner"]
+[editable path="Control/GridContainer2/TextureButton8/Weiner"]
+[editable path="Control/GridContainer2/TextureButton9/Weiner"]
+[editable path="Control/GridContainer2/TextureButton10/Weiner"]
