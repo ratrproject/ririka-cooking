@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2ct0w31g2n7j"]
+
+[ext_resource type="Texture2D" uid="uid://bhk733wd0vspl" path="res://Images/weiner.jpg" id="1_q7kk1"]
+[ext_resource type="Script" path="res://Scripts/FoodButton.gd" id="2_22gse"]
+
+[node name="FoodItem" type="TextureButton"]
+custom_minimum_size = Vector2(25, 25)
+texture_normal = ExtResource("1_q7kk1")
+ignore_texture_size = true
+stretch_mode = 4
+script = ExtResource("2_22gse")
+foodName = "Weiner"
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
