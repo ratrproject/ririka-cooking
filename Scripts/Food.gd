@@ -6,6 +6,7 @@ extends Node2D
 
 @export var foodName = ''
 @export var calories = 0
+@export var price = 0
 @export var nutrition = 0
 @export var mutation = 0
 @export var quanity = 0

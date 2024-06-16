@@ -25,6 +25,7 @@ gradient = SubResource("Gradient_437y7")
 metadata/_edit_vertical_guides_ = [-3036.0]
 
 [node name="Main" type="Node2D" parent="."]
+visible = false
 
 [node name="Camera2D" type="Camera2D" parent="Main"]
 editor_draw_limits = true
@@ -88,7 +89,6 @@ theme_override_font_sizes/font_size = 50
 text = "Shop"
 
 [node name="ShopMenu" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -106,14 +106,26 @@ scale = Vector2(62.4061, 30.3733)
 
 [node name="Label" type="Label" parent="ShopMenu"]
 layout_mode = 0
-offset_left = -268.0
-offset_top = -442.0
-offset_right = 272.0
-offset_bottom = -166.0
+offset_left = -266.0
+offset_top = -489.0
+offset_right = 274.0
+offset_bottom = -213.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 200
 text = "SHOP"
 horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MoneyLabel" type="Label" parent="ShopMenu"]
+layout_mode = 0
+offset_left = 353.0
+offset_top = -463.0
+offset_right = 893.0
+offset_bottom = -187.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "$$$"
+horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="ShopCloseButton" type="Button" parent="ShopMenu"]
@@ -128,10 +140,10 @@ text = "Back"
 [node name="Inventory" type="GridContainer" parent="ShopMenu"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 0
-offset_left = -878.0
-offset_top = -74.0
-offset_right = -578.0
-offset_bottom = 54.0
+offset_left = -869.0
+offset_top = -149.0
+offset_right = -569.0
+offset_bottom = -21.0
 scale = Vector2(5.77639, 5.77639)
 theme_override_constants/h_separation = 25
 theme_override_constants/v_separation = 15

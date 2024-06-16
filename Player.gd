@@ -18,3 +18,6 @@ func _advance_day():
 	if currentDay % 7 == 0:
 		money += 20
 	currentDay += 1
+
+func _on_purchase(price):
+	money -= price;

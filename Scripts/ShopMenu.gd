@@ -10,6 +10,14 @@ signal open
 func _ready():
 	_shop_reset()
 
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	var ririka = get_node_or_null ('/root/Base/Main/Ririka')
+	var label = get_node('/root/Base/ShopMenu/MoneyLabel')
+	label.text = '$ ' + str(ririka.money)
+
+
 func _shop_reset():
 	var inventory = get_node_or_null ('Inventory')
 	var shop_item = preload("res://Nodes/shop_item.tscn")
@@ -34,6 +42,10 @@ func _shop_reset():
 			inventory.add_child(shop_obj)
 			shop_obj.texture_normal = food.icon
 			shop_obj.foodName = food.foodName
+			shop_obj.price = food.price
+			
+			var label = shop_obj.get_node("Label")
+			label.text = '$ ' + str(food.price)
 
 func _open():
 	self.visible = true
