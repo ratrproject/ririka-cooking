@@ -12,17 +12,23 @@ func _ready():
 
 func _shop_reset():
 	var inventory = get_node_or_null ('Inventory')
+	var shop_item = preload("res://Nodes/shop_item.tscn")
 	if inventory != null:
 		for n in inventory.get_children():
 			inventory.remove_child(n)
 			n.queue_free()
 		
 		for n in range(10):
-			var shop_item = preload("res://Nodes/shop_item.tscn")
-			var weiner = preload("res://Food/weiner.tscn")
+			var rn = randi_range(0,1)
+			var food_item = null;
+			match rn:
+				1:
+					food_item = preload("res://Food/weiner.tscn")
+				_:
+					food_item = preload("res://Food/ramen.tscn")
 		
 			var shop_obj = shop_item.instantiate()
-			var food = weiner.instantiate()
+			var food = food_item.instantiate()
 		
 			shop_obj.add_child(food)
 			inventory.add_child(shop_obj)
