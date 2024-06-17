@@ -89,6 +89,7 @@ theme_override_font_sizes/font_size = 50
 text = "Shop"
 
 [node name="ShopMenu" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -151,7 +152,6 @@ columns = 5
 script = ExtResource("9_dv73i")
 
 [node name="DayResults" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -167,6 +167,16 @@ offset_right = -1223.0
 offset_bottom = -531.0
 scale = Vector2(62.4061, 30.3733)
 
+[node name="ColorRect2" type="ColorRect" parent="DayResults"]
+clip_contents = true
+layout_mode = 0
+offset_left = -552.0
+offset_top = 104.0
+offset_right = -512.0
+offset_bottom = 144.0
+scale = Vector2(25.1178, -0.306396)
+color = Color(0, 0, 0, 1)
+
 [node name="Label" type="Label" parent="DayResults"]
 layout_mode = 0
 offset_left = -482.0
@@ -177,6 +187,63 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 200
 text = "DAY END"
 horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Summary" type="GridContainer" parent="DayResults"]
+layout_mode = 0
+offset_left = -367.0
+offset_top = -132.0
+offset_right = 533.0
+offset_bottom = 215.0
+theme_override_constants/h_separation = 100
+theme_override_constants/v_separation = 0
+columns = 2
+
+[node name="Calories" type="Label" parent="DayResults/Summary"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "Calories"
+vertical_alignment = 1
+
+[node name="CaloriesTotal" type="Label" parent="DayResults/Summary"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "100"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Nutrition" type="Label" parent="DayResults/Summary"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "Nutrition"
+vertical_alignment = 1
+
+[node name="NutritionTotal" type="Label" parent="DayResults/Summary"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "100"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Health" type="Label" parent="DayResults/Summary"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 80
+text = "Health"
+vertical_alignment = 1
+
+[node name="HealthTotal" type="Label" parent="DayResults/Summary"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 80
+text = "100"
+horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="NewDayButton" type="Button" parent="DayResults"]
