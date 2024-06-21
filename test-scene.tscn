@@ -1,11 +1,13 @@
 [gd_scene load_steps=12 format=3 uid="uid://cvmrrmkcgae66"]
 
+[ext_resource type="Script" path="res://Scripts/Inventory.gd" id="2_g28te"]
 [ext_resource type="Texture2D" uid="uid://ckli3lt31rnn6" path="res://Images/料理したくない日ってあるよね。そんな時に食べる最強飯見つけた。【#一条莉々華_hololive DEV_IS ReGLOSS】 1-41 screenshot.png" id="2_o4dve"]
-[ext_resource type="Script" path="res://Inventory.gd" id="2_svuwy"]
 [ext_resource type="Texture2D" uid="uid://d2k773cfl7etx" path="res://Images/Ichijou_Ririka_Full_Body_2.webp" id="3_rmqvn"]
-[ext_resource type="Script" path="res://Player.gd" id="4_axwrt"]
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="4_nwwjx"]
 [ext_resource type="Script" path="res://Scripts/Bowl.gd" id="6_3dy5y"]
-[ext_resource type="Script" path="res://DayResults.gd" id="7_lg1gy"]
+[ext_resource type="Texture2D" uid="uid://rdany3aax5eg" path="res://Images/Bowl.png" id="6_y42xm"]
+[ext_resource type="Script" path="res://Scripts/DayResults.gd" id="8_e3w6x"]
+[ext_resource type="Script" path="res://Scripts/Death.gd" id="9_2qen0"]
 [ext_resource type="Script" path="res://Scripts/ShopMenu.gd" id="9_dv73i"]
 
 [sub_resource type="Gradient" id="Gradient_ea5xk"]
@@ -15,17 +17,10 @@ colors = PackedColorArray(0.282353, 0.282353, 0.282353, 1, 0.282353, 0.282353, 0
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_38btl"]
 gradient = SubResource("Gradient_ea5xk")
 
-[sub_resource type="Gradient" id="Gradient_437y7"]
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_voyso"]
-gradient = SubResource("Gradient_437y7")
-
 [node name="Base" type="Node2D"]
 metadata/_edit_vertical_guides_ = [-3036.0]
 
 [node name="Main" type="Node2D" parent="."]
-visible = false
 
 [node name="Camera2D" type="Camera2D" parent="Main"]
 editor_draw_limits = true
@@ -50,21 +45,21 @@ offset_right = 264.0
 offset_bottom = -438.0
 scale = Vector2(5.77639, 5.77639)
 columns = 3
-script = ExtResource("2_svuwy")
+script = ExtResource("2_g28te")
 
 [node name="Ririka" type="Sprite2D" parent="Main"]
 position = Vector2(624, 938)
 scale = Vector2(1.62107, 1.62107)
 texture = ExtResource("3_rmqvn")
-script = ExtResource("4_axwrt")
+script = ExtResource("4_nwwjx")
 
 [node name="Bowl" type="Node2D" parent="Main"]
 position = Vector2(18, -34)
 script = ExtResource("6_3dy5y")
 
 [node name="BowlImage" type="Sprite2D" parent="Main/Bowl"]
-scale = Vector2(3.14218, 781.875)
-texture = SubResource("GradientTexture1D_voyso")
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("6_y42xm")
 
 [node name="BowlContents" type="Control" parent="Main/Bowl"]
 layout_mode = 3
@@ -152,11 +147,12 @@ columns = 5
 script = ExtResource("9_dv73i")
 
 [node name="DayResults" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("7_lg1gy")
+script = ExtResource("8_e3w6x")
 
 [node name="ColorRect" type="ColorRect" parent="DayResults"]
 clip_contents = true
@@ -255,6 +251,57 @@ offset_bottom = 449.0
 theme_override_font_sizes/font_size = 50
 text = "Next Day"
 
+[node name="Death" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("9_2qen0")
+
+[node name="ColorRect3" type="ColorRect" parent="Death"]
+clip_contents = true
+layout_mode = 0
+offset_left = -1263.0
+offset_top = -571.0
+offset_right = -1223.0
+offset_bottom = -531.0
+scale = Vector2(62.4061, 30.3733)
+
+[node name="Label2" type="Label" parent="Death"]
+layout_mode = 0
+offset_left = -471.0
+offset_top = -138.0
+offset_right = 394.0
+offset_bottom = 138.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 200
+text = "DEAD"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SurviveCounter" type="Label" parent="Death"]
+layout_mode = 0
+offset_left = -471.0
+offset_top = 58.0
+offset_right = 394.0
+offset_bottom = 334.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 69
+text = "SURVIVED XX DAYS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RestartButton" type="Button" parent="Death"]
+layout_mode = 0
+offset_left = -177.0
+offset_top = 369.0
+offset_right = 154.0
+offset_bottom = 449.0
+theme_override_font_sizes/font_size = 50
+text = "Restart"
+
+[connection signal="is_dead" from="Main/Ririka" to="Death" method="_open"]
 [connection signal="pressed" from="Main/EatButton" to="DayResults" method="_open"]
 [connection signal="pressed" from="Main/ShopButton" to="ShopMenu" method="_open"]
 [connection signal="pressed" from="ShopMenu/ShopCloseButton" to="ShopMenu" method="_close"]
@@ -262,3 +309,4 @@ text = "Next Day"
 [connection signal="day_advanced" from="DayResults" to="Main/Bowl" method="_on_day_results_day_advanced"]
 [connection signal="day_advanced" from="DayResults" to="ShopMenu" method="_on_day_results_day_advanced"]
 [connection signal="pressed" from="DayResults/NewDayButton" to="DayResults" method="_close"]
+[connection signal="pressed" from="Death/RestartButton" to="Death" method="_restart"]

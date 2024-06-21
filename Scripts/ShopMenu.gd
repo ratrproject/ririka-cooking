@@ -27,11 +27,35 @@ func _shop_reset():
 			n.queue_free()
 		
 		for n in range(10):
-			var rn = randi_range(0,1)
+			var rn = randi_range(0,20)
 			var food_item = null;
 			match rn:
-				1:
+				1,14,15:
 					food_item = preload("res://Food/weiner.tscn")
+				2,18:
+					food_item = preload("res://Food/egg.tscn")
+				3:
+					food_item = preload("res://Food/brocolli.tscn")
+				4:
+					food_item = preload("res://Food/cabbage.tscn")
+				5:
+					food_item = preload("res://Food/chicken.tscn")
+				6,16,17:
+					food_item = preload("res://Food/expired-weiner.tscn")
+				7:
+					food_item = preload("res://Food/hardboiled-egg.tscn")
+				8:
+					food_item = preload("res://Food/harissa.tscn")
+				9:
+					food_item = preload("res://Food/karaage.tscn")
+				10:
+					food_item = preload("res://Food/menma.tscn")
+				11,19:
+					food_item = preload("res://Food/rice.tscn")
+				12:
+					food_item = preload("res://Food/tako.tscn")
+				13:
+					food_item = preload("res://Food/tuna.tscn")
 				_:
 					food_item = preload("res://Food/ramen.tscn")
 		

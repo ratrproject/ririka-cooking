@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://d363gyh0t47mq"]
+
+[ext_resource type="Script" path="res://Scripts/Food.gd" id="1_w728w"]
+[ext_resource type="Texture2D" uid="uid://b83t1caljcjcg" path="res://Images/weiner.png" id="2_16udw"]
+[ext_resource type="Texture2D" uid="uid://6e253ja6l1e5" path="res://Images/prepared_weiner.png" id="3_qmjyj"]
+[ext_resource type="Texture2D" uid="uid://bhk733wd0vspl" path="res://Images/weiner.jpg" id="4_cwbig"]
+
+[node name="chicken" type="Node2D"]
+script = ExtResource("1_w728w")
+foodName = "Chicken"
+calories = 100
+price = 2
+nutrition = 30
+cookLimit = 4
+icon = ExtResource("2_16udw")
+cookedImage1 = ExtResource("3_qmjyj")
+cookedImage2 = ExtResource("4_cwbig")
+cookedImage3 = ExtResource("4_cwbig")
+cookedImage4 = ExtResource("4_cwbig")

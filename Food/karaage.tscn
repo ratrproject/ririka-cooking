@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://dnr7iqyakyfw4"]
+
+[ext_resource type="Script" path="res://Scripts/Food.gd" id="1_xdgwt"]
+[ext_resource type="Texture2D" uid="uid://b83t1caljcjcg" path="res://Images/weiner.png" id="2_s4ndr"]
+[ext_resource type="Texture2D" uid="uid://6e253ja6l1e5" path="res://Images/prepared_weiner.png" id="3_uwn70"]
+[ext_resource type="Texture2D" uid="uid://bhk733wd0vspl" path="res://Images/weiner.jpg" id="4_1fkm3"]
+
+[node name="Karaage" type="Node2D"]
+script = ExtResource("1_xdgwt")
+foodName = "Karaage"
+calories = 100
+price = 2
+nutrition = 30
+cookLimit = 4
+icon = ExtResource("2_s4ndr")
+cookedImage1 = ExtResource("3_uwn70")
+cookedImage2 = ExtResource("4_1fkm3")
+cookedImage3 = ExtResource("4_1fkm3")
+cookedImage4 = ExtResource("4_1fkm3")

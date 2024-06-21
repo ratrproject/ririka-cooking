@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://bj1usg15vsc8v"]
+
+[ext_resource type="Script" path="res://Scripts/Food.gd" id="1_44kd0"]
+[ext_resource type="Texture2D" uid="uid://ve6ykwbfobnt" path="res://Images/scallions.png" id="2_m2v1l"]
+[ext_resource type="Texture2D" uid="uid://b6quqi75jsyfr" path="res://Images/prepared_scallions.png" id="3_r5l7h"]
+[ext_resource type="Texture2D" uid="uid://dkihd2wgwdheg" path="res://Images/Miso-US_d2a24340-a68e-4bb1-a973-d500c3fba412_grande.webp" id="4_rsoak"]
+
+[node name="Scallion" type="Node2D"]
+script = ExtResource("1_44kd0")
+foodName = "Egg"
+calories = 100
+price = 1
+nutrition = 30
+cookLimit = 4
+icon = ExtResource("2_m2v1l")
+cookedImage1 = ExtResource("3_r5l7h")
+cookedImage2 = ExtResource("4_rsoak")
+cookedImage3 = ExtResource("4_rsoak")
+cookedImage4 = ExtResource("4_rsoak")

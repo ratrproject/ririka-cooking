@@ -16,9 +16,15 @@ extends Node2D
 @export var overEatHealthDrain = 0.25
 @export var healthRestore = 5
 
+signal is_dead
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
+
+func _input(event):
+	if event.is_action_pressed("ui_cancel"):
+		get_tree().quit()
 
 func _advance_day():
 	if currentDay % 7 == 0:
@@ -35,5 +41,8 @@ func _adjust_health(calories, nutrition):
 		health -= (calories - overEatHealthDrain) * hungerHealthDrain
 	else:
 		health += healthRestore
+		
+	if health <= 0:
+		emit_signal('is_dead')
 		
 	return health > 0

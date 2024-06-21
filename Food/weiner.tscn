@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bqryt3bvwjgmy"]
+[gd_scene load_steps=5 format=3 uid="uid://bqryt3bvwjgmy"]
 
 [ext_resource type="Script" path="res://Scripts/Food.gd" id="1_k85ql"]
+[ext_resource type="Texture2D" uid="uid://b83t1caljcjcg" path="res://Images/weiner.png" id="2_fl0xc"]
 [ext_resource type="Texture2D" uid="uid://bhk733wd0vspl" path="res://Images/weiner.jpg" id="2_y4yxi"]
+[ext_resource type="Texture2D" uid="uid://6e253ja6l1e5" path="res://Images/prepared_weiner.png" id="3_ttsf7"]
 
 [node name="Weiner" type="Node2D"]
 script = ExtResource("1_k85ql")
@@ -10,8 +12,8 @@ calories = 100
 price = 2
 nutrition = 30
 cookLimit = 4
-icon = ExtResource("2_y4yxi")
-cookedImage1 = ExtResource("2_y4yxi")
+icon = ExtResource("2_fl0xc")
+cookedImage1 = ExtResource("3_ttsf7")
 cookedImage2 = ExtResource("2_y4yxi")
 cookedImage3 = ExtResource("2_y4yxi")
 cookedImage4 = ExtResource("2_y4yxi")

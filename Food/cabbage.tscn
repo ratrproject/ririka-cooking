@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://dm55f6r0yvj8p"]
+
+[ext_resource type="Script" path="res://Scripts/Food.gd" id="1_g1gcl"]
+[ext_resource type="Texture2D" uid="uid://b83t1caljcjcg" path="res://Images/weiner.png" id="2_osnag"]
+[ext_resource type="Texture2D" uid="uid://6e253ja6l1e5" path="res://Images/prepared_weiner.png" id="3_t5p3q"]
+[ext_resource type="Texture2D" uid="uid://bhk733wd0vspl" path="res://Images/weiner.jpg" id="4_wl60i"]
+
+[node name="Cabbage" type="Node2D"]
+script = ExtResource("1_g1gcl")
+foodName = "Cabbage"
+calories = 100
+price = 2
+nutrition = 30
+cookLimit = 4
+icon = ExtResource("2_osnag")
+cookedImage1 = ExtResource("3_t5p3q")
+cookedImage2 = ExtResource("4_wl60i")
+cookedImage3 = ExtResource("4_wl60i")
+cookedImage4 = ExtResource("4_wl60i")
