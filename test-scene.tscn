@@ -1,14 +1,29 @@
-[gd_scene load_steps=12 format=3 uid="uid://cvmrrmkcgae66"]
+[gd_scene load_steps=28 format=3 uid="uid://cvmrrmkcgae66"]
 
+[ext_resource type="Texture2D" uid="uid://cfs8f64qvbj1g" path="res://Images/table.png" id="1_5qcnn"]
+[ext_resource type="Texture2D" uid="uid://qydjboejtdv2" path="res://Images/GIOVzqfbQAA8foQ.jpg" id="1_rwtpx"]
 [ext_resource type="Script" path="res://Scripts/Inventory.gd" id="2_g28te"]
-[ext_resource type="Texture2D" uid="uid://ckli3lt31rnn6" path="res://Images/料理したくない日ってあるよね。そんな時に食べる最強飯見つけた。【#一条莉々華_hololive DEV_IS ReGLOSS】 1-41 screenshot.png" id="2_o4dve"]
-[ext_resource type="Texture2D" uid="uid://d2k773cfl7etx" path="res://Images/Ichijou_Ririka_Full_Body_2.webp" id="3_rmqvn"]
+[ext_resource type="Texture2D" uid="uid://d2k773cfl7etx" path="res://Images/old/Ichijou_Ririka_Full_Body_2.webp" id="3_wj6pf"]
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="4_nwwjx"]
+[ext_resource type="Texture2D" uid="uid://uwxevn00oih6" path="res://Images/Serving_Plate-Photoroom.png" id="6_2j7ke"]
 [ext_resource type="Script" path="res://Scripts/Bowl.gd" id="6_3dy5y"]
-[ext_resource type="Texture2D" uid="uid://rdany3aax5eg" path="res://Images/Bowl.png" id="6_y42xm"]
+[ext_resource type="AudioStream" uid="uid://cleliyn8ktbsb" path="res://Sound/537709__kostas17__wooden-object-place.wav" id="7_w707a"]
 [ext_resource type="Script" path="res://Scripts/DayResults.gd" id="8_e3w6x"]
+[ext_resource type="AudioStream" uid="uid://dgs6pqsliar17" path="res://Sound/565133__unfa__ui_cancel.wav" id="8_i32yb"]
 [ext_resource type="Script" path="res://Scripts/Death.gd" id="9_2qen0"]
 [ext_resource type="Script" path="res://Scripts/ShopMenu.gd" id="9_dv73i"]
+[ext_resource type="Texture2D" uid="uid://b8ahrarmoob5p" path="res://Images/Shop.png" id="10_bi663"]
+[ext_resource type="AudioStream" uid="uid://dbppibev8njl2" path="res://Sound/411170__silverillusionist__eating.wav" id="10_dfyeh"]
+[ext_resource type="AudioStream" uid="uid://y226xbi4svsf" path="res://Sound/とある日常.mp3" id="10_nerx5"]
+[ext_resource type="Script" path="res://Tutorial.gd" id="12_uhx2p"]
+[ext_resource type="AudioStream" uid="uid://oq6yy33rgrp3" path="res://Sound/393666__chripei__wahi-siren-to-loop.mp3" id="13_2rx25"]
+[ext_resource type="Texture2D" uid="uid://bydkaqgxkoai0" path="res://Images/ambulancia_100x100_3.png" id="15_h40kd"]
+
+[sub_resource type="Gradient" id="Gradient_lck55"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0u5c2"]
+gradient = SubResource("Gradient_lck55")
 
 [sub_resource type="Gradient" id="Gradient_ea5xk"]
 offsets = PackedFloat32Array(0, 0.994012, 1)
@@ -17,49 +32,129 @@ colors = PackedColorArray(0.282353, 0.282353, 0.282353, 1, 0.282353, 0.282353, 0
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_38btl"]
 gradient = SubResource("Gradient_ea5xk")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p6syu"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.94902, 0.521569, 0.329412, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ioc20"]
+atlas = ExtResource("15_h40kd")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ti61l"]
+atlas = ExtResource("15_h40kd")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y6j75"]
+atlas = ExtResource("15_h40kd")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fq23t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ioc20")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ti61l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y6j75")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
 [node name="Base" type="Node2D"]
 metadata/_edit_vertical_guides_ = [-3036.0]
 
 [node name="Main" type="Node2D" parent="."]
+visible = false
 
 [node name="Camera2D" type="Camera2D" parent="Main"]
 editor_draw_limits = true
 
+[node name="TextureRect" type="TextureRect" parent="Main/Camera2D"]
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+texture = ExtResource("1_5qcnn")
+
 [node name="Background" type="Sprite2D" parent="Main/Camera2D"]
+visible = false
 position = Vector2(-65, -42)
-scale = Vector2(1.14352, 1.14352)
-texture = ExtResource("2_o4dve")
+scale = Vector2(2.134, 2.134)
+texture = ExtResource("1_rwtpx")
+
+[node name="Sprite2D" type="Sprite2D" parent="Main/Camera2D/Background"]
+position = Vector2(391.641, -22.091)
+scale = Vector2(0.947, 84.203)
+texture = SubResource("GradientTexture1D_0u5c2")
 
 [node name="Inventory" type="Node2D" parent="Main"]
 position = Vector2(-1116, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Main/Inventory"]
+visible = false
 position = Vector2(349, -87)
 scale = Vector2(2.63256, 1371.36)
 texture = SubResource("GradientTexture1D_38btl")
 
 [node name="Inventory" type="GridContainer" parent="Main/Inventory"]
-offset_left = 180.0
-offset_top = -478.0
+visible = false
+offset_left = 264.0
+offset_top = -555.0
 offset_right = 264.0
-offset_bottom = -438.0
-scale = Vector2(5.77639, 5.77639)
+offset_bottom = -555.0
+theme_override_constants/v_separation = 10
+columns = 3
+script = ExtResource("2_g28te")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Main/Inventory"]
+custom_minimum_size = Vector2(100, 100)
+offset_left = 292.0
+offset_top = -475.0
+offset_right = 756.844
+offset_bottom = 475.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="Inventory" type="GridContainer" parent="Main/Inventory/ScrollContainer"]
+custom_minimum_size = Vector2(400, 500)
+layout_mode = 2
+theme_override_constants/h_separation = 35
+theme_override_constants/v_separation = 65
 columns = 3
 script = ExtResource("2_g28te")
 
 [node name="Ririka" type="Sprite2D" parent="Main"]
 position = Vector2(624, 938)
 scale = Vector2(1.62107, 1.62107)
-texture = ExtResource("3_rmqvn")
+texture = ExtResource("3_wj6pf")
 script = ExtResource("4_nwwjx")
+money = 80
+startingWage = 70
+neededCalories = 1000
+overEatCalories = 1400
+hungerHealthDrain = 0.015
+overEatHealthDrain = 0.005
+greatNutrition = 150
+nutritionHealthDrain = 0.2
 
 [node name="Bowl" type="Node2D" parent="Main"]
-position = Vector2(18, -34)
+position = Vector2(14, 19)
 script = ExtResource("6_3dy5y")
 
 [node name="BowlImage" type="Sprite2D" parent="Main/Bowl"]
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("6_y42xm")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_2j7ke")
 
 [node name="BowlContents" type="Control" parent="Main/Bowl"]
 layout_mode = 3
@@ -67,21 +162,52 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Main/Bowl"]
+scale = Vector2(1.5, 1.5)
+stream = ExtResource("7_w707a")
+volume_db = -10.575
+
+[node name="ErrorSound" type="AudioStreamPlayer2D" parent="Main/Bowl"]
+scale = Vector2(1.5, 1.5)
+stream = ExtResource("8_i32yb")
+volume_db = -13.746
+
+[node name="Calories" type="Label" parent="Main/Bowl"]
+offset_left = -164.0
+offset_top = -526.0
+offset_right = 130.0
+offset_bottom = -435.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 64
+text = "0 calories
+"
+vertical_alignment = 1
+
+[node name="Nutrition" type="Label" parent="Main/Bowl"]
+offset_left = -164.0
+offset_top = -441.0
+offset_right = 177.0
+offset_bottom = -350.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 64
+text = "0 nutrients"
+vertical_alignment = 1
+
 [node name="EatButton" type="Button" parent="Main"]
-offset_left = 547.0
-offset_top = -294.0
-offset_right = 878.0
-offset_bottom = -214.0
+offset_left = -159.0
+offset_top = 403.0
+offset_right = 172.0
+offset_bottom = 483.0
 theme_override_font_sizes/font_size = 50
-text = "Eat"
+text = "Eat 🍴"
 
 [node name="ShopButton" type="Button" parent="Main"]
-offset_left = 547.0
-offset_top = -425.0
-offset_right = 878.0
-offset_bottom = -345.0
+offset_left = 489.0
+offset_top = -442.0
+offset_right = 749.83
+offset_bottom = -300.54
 theme_override_font_sizes/font_size = 50
-text = "Shop"
+text = "Shop 💸"
 
 [node name="ShopMenu" type="Control" parent="."]
 visible = false
@@ -100,7 +226,16 @@ offset_right = -1223.0
 offset_bottom = -531.0
 scale = Vector2(62.4061, 30.3733)
 
+[node name="TextureRect" type="TextureRect" parent="ShopMenu"]
+layout_mode = 0
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+texture = ExtResource("10_bi663")
+
 [node name="Label" type="Label" parent="ShopMenu"]
+visible = false
 layout_mode = 0
 offset_left = -266.0
 offset_top = -489.0
@@ -114,10 +249,10 @@ vertical_alignment = 1
 
 [node name="MoneyLabel" type="Label" parent="ShopMenu"]
 layout_mode = 0
-offset_left = 353.0
-offset_top = -463.0
-offset_right = 893.0
-offset_bottom = -187.0
+offset_left = 333.0
+offset_top = -519.0
+offset_right = 873.0
+offset_bottom = -243.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 100
 text = "$$$"
@@ -126,33 +261,35 @@ vertical_alignment = 1
 
 [node name="ShopCloseButton" type="Button" parent="ShopMenu"]
 layout_mode = 0
-offset_left = -943.0
-offset_top = -471.0
-offset_right = -612.0
-offset_bottom = -391.0
+offset_left = -866.0
+offset_top = -501.0
+offset_right = -535.0
+offset_bottom = -421.0
+scale = Vector2(1, 0.959545)
 theme_override_font_sizes/font_size = 50
 text = "Back"
 
 [node name="Inventory" type="GridContainer" parent="ShopMenu"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 0
-offset_left = -869.0
-offset_top = -149.0
-offset_right = -569.0
-offset_bottom = -21.0
+offset_left = -841.0
+offset_top = -208.0
+offset_right = -541.0
+offset_bottom = -80.0
 scale = Vector2(5.77639, 5.77639)
 theme_override_constants/h_separation = 25
-theme_override_constants/v_separation = 15
+theme_override_constants/v_separation = 20
 columns = 5
 script = ExtResource("9_dv73i")
 
-[node name="DayResults" type="Control" parent="."]
+[node name="DayResults" type="Control" parent="." node_paths=PackedStringArray("box")]
 visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("8_e3w6x")
+box = NodePath("DayGrid/1/Box")
 
 [node name="ColorRect" type="ColorRect" parent="DayResults"]
 clip_contents = true
@@ -162,24 +299,24 @@ offset_top = -571.0
 offset_right = -1223.0
 offset_bottom = -531.0
 scale = Vector2(62.4061, 30.3733)
+color = Color(0, 0, 0, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="DayResults"]
 clip_contents = true
 layout_mode = 0
-offset_left = -552.0
-offset_top = 104.0
-offset_right = -512.0
-offset_bottom = 144.0
+offset_left = -544.0
+offset_top = 45.0
+offset_right = -504.0
+offset_bottom = 85.0
 scale = Vector2(25.1178, -0.306396)
-color = Color(0, 0, 0, 1)
 
 [node name="Label" type="Label" parent="DayResults"]
 layout_mode = 0
-offset_left = -482.0
-offset_top = -438.0
-offset_right = 383.0
-offset_bottom = -162.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+offset_left = -473.0
+offset_top = -521.0
+offset_right = 392.0
+offset_bottom = -245.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 200
 text = "DAY END"
 horizontal_alignment = 1
@@ -187,24 +324,24 @@ vertical_alignment = 1
 
 [node name="Summary" type="GridContainer" parent="DayResults"]
 layout_mode = 0
-offset_left = -367.0
-offset_top = -132.0
-offset_right = 533.0
-offset_bottom = 215.0
+offset_left = -376.0
+offset_top = -190.0
+offset_right = 524.0
+offset_bottom = 157.0
 theme_override_constants/h_separation = 100
 theme_override_constants/v_separation = 0
 columns = 2
 
 [node name="Calories" type="Label" parent="DayResults/Summary"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 80
 text = "Calories"
 vertical_alignment = 1
 
 [node name="CaloriesTotal" type="Label" parent="DayResults/Summary"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 80
 text = "100"
 horizontal_alignment = 2
@@ -212,14 +349,14 @@ vertical_alignment = 1
 
 [node name="Nutrition" type="Label" parent="DayResults/Summary"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 80
 text = "Nutrition"
 vertical_alignment = 1
 
 [node name="NutritionTotal" type="Label" parent="DayResults/Summary"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 80
 text = "100"
 horizontal_alignment = 2
@@ -227,7 +364,7 @@ vertical_alignment = 1
 
 [node name="Health" type="Label" parent="DayResults/Summary"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/line_spacing = 0
 theme_override_font_sizes/font_size = 80
 text = "Health"
@@ -235,7 +372,7 @@ vertical_alignment = 1
 
 [node name="HealthTotal" type="Label" parent="DayResults/Summary"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/line_spacing = 0
 theme_override_font_sizes/font_size = 80
 text = "100"
@@ -244,12 +381,108 @@ vertical_alignment = 1
 
 [node name="NewDayButton" type="Button" parent="DayResults"]
 layout_mode = 0
-offset_left = -177.0
-offset_top = 369.0
-offset_right = 154.0
-offset_bottom = 449.0
+offset_left = -179.0
+offset_top = 389.0
+offset_right = 152.0
+offset_bottom = 469.0
 theme_override_font_sizes/font_size = 50
-text = "Next Day"
+text = "Next Day 🛏️"
+
+[node name="DayGrid" type="GridContainer" parent="DayResults"]
+layout_mode = 0
+offset_left = -350.0
+offset_top = 233.0
+offset_right = 321.0
+offset_bottom = 313.0
+theme_override_constants/h_separation = 30
+columns = 7
+
+[node name="1" type="Label" parent="DayResults/DayGrid"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 56
+text = "Su"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Box" type="Panel" parent="DayResults/DayGrid/1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.5
+offset_top = -40.0
+offset_right = 56.5
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_p6syu")
+
+[node name="2" type="Label" parent="DayResults/DayGrid"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 56
+text = "Mo"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="3" type="Label" parent="DayResults/DayGrid"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 56
+text = "Tu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="4" type="Label" parent="DayResults/DayGrid"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 56
+text = "We"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="5" type="Label" parent="DayResults/DayGrid"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 56
+text = "Th"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="6" type="Label" parent="DayResults/DayGrid"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 56
+text = "Fr"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="7" type="Label" parent="DayResults/DayGrid"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 56
+text = "Sa"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="DayResults"]
+stream = ExtResource("10_dfyeh")
+
+[node name="Wage" type="Label" parent="DayResults"]
+visible = false
+layout_mode = 0
+offset_left = 374.0
+offset_top = 216.0
+offset_right = 684.0
+offset_bottom = 329.0
+theme_override_colors/font_color = Color(0.2, 0.709804, 0.145098, 1)
+theme_override_font_sizes/font_size = 80
+text = "+$50"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Death" type="Control" parent="."]
 visible = false
@@ -267,16 +500,17 @@ offset_top = -571.0
 offset_right = -1223.0
 offset_bottom = -531.0
 scale = Vector2(62.4061, 30.3733)
+color = Color(0, 0, 0, 1)
 
 [node name="Label2" type="Label" parent="Death"]
 layout_mode = 0
-offset_left = -471.0
-offset_top = -138.0
-offset_right = 394.0
-offset_bottom = 138.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+offset_left = -649.0
+offset_top = -346.0
+offset_right = 740.0
+offset_bottom = -70.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 200
-text = "DEAD"
+text = "HOSPITALIZED"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -286,7 +520,7 @@ offset_left = -471.0
 offset_top = 58.0
 offset_right = 394.0
 offset_bottom = 334.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 69
 text = "SURVIVED XX DAYS"
 horizontal_alignment = 1
@@ -299,7 +533,113 @@ offset_top = 369.0
 offset_right = 154.0
 offset_bottom = 449.0
 theme_override_font_sizes/font_size = 50
-text = "Restart"
+text = "Restart 🏥"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Death"]
+position = Vector2(-177, 369)
+stream = ExtResource("13_2rx25")
+volume_db = -15.98
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Death"]
+position = Vector2(-12, 6)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_fq23t")
+animation = &"new_animation"
+autoplay = "new_animation"
+frame_progress = 0.340926
+
+[node name="Tutorial" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("12_uhx2p")
+
+[node name="ColorRect3" type="ColorRect" parent="Tutorial"]
+clip_contents = true
+layout_mode = 0
+offset_left = -1263.0
+offset_top = -571.0
+offset_right = -1223.0
+offset_bottom = -531.0
+scale = Vector2(62.4061, 30.3733)
+
+[node name="TextureRect3" type="TextureRect" parent="Tutorial"]
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+texture = ExtResource("1_5qcnn")
+
+[node name="Label2" type="Label" parent="Tutorial"]
+layout_mode = 0
+offset_left = -736.0
+offset_top = -360.0
+offset_right = 749.0
+offset_bottom = -84.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 200
+text = "Ririka's Kitchen"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Tutorial"]
+layout_mode = 0
+offset_left = -746.0
+offset_top = -46.0
+offset_right = 739.0
+offset_bottom = 349.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 44
+text = "The goal of the game is to survive as long as you can by making meals each day.
+
+Aim for 1000 calories and 100 nutrients per meal to stay healthy!
+
+You will be paid an Idol's wage at the end of each week."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="RestartButton" type="Button" parent="Tutorial"]
+layout_mode = 0
+offset_left = -174.0
+offset_top = 380.0
+offset_right = 157.0
+offset_bottom = 460.0
+theme_override_font_sizes/font_size = 50
+text = "Play 👩‍🍳"
+
+[node name="TextureRect" type="TextureRect" parent="Tutorial"]
+layout_mode = 0
+offset_left = -961.0
+offset_top = 101.0
+offset_right = -261.0
+offset_bottom = 1361.0
+rotation = 0.466705
+texture = ExtResource("3_wj6pf")
+
+[node name="TextureRect2" type="TextureRect" parent="Tutorial"]
+layout_mode = 0
+offset_left = 483.0
+offset_top = 99.0
+offset_right = 1183.0
+offset_bottom = 1359.0
+rotation = -0.370822
+texture = ExtResource("3_wj6pf")
+
+[node name="TextureRect4" type="TextureRect" parent="Tutorial"]
+layout_mode = 0
+offset_left = -50.0001
+offset_top = -689.0
+offset_right = 650.0
+offset_bottom = 571.0
+rotation = 1.9295
+texture = ExtResource("3_wj6pf")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_nerx5")
+volume_db = -12.503
+autoplay = true
 
 [connection signal="is_dead" from="Main/Ririka" to="Death" method="_open"]
 [connection signal="pressed" from="Main/EatButton" to="DayResults" method="_open"]
@@ -310,3 +650,4 @@ text = "Restart"
 [connection signal="day_advanced" from="DayResults" to="ShopMenu" method="_on_day_results_day_advanced"]
 [connection signal="pressed" from="DayResults/NewDayButton" to="DayResults" method="_close"]
 [connection signal="pressed" from="Death/RestartButton" to="Death" method="_restart"]
+[connection signal="pressed" from="Tutorial/RestartButton" to="Tutorial" method="_close"]

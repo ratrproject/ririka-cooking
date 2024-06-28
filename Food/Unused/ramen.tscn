@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://bvm0ysodcqbn4"]
+
+[ext_resource type="Script" path="res://Scripts/Food.gd" id="1_v6hmt"]
+[ext_resource type="Texture2D" uid="uid://dkihd2wgwdheg" path="res://Images/old/Miso-US_d2a24340-a68e-4bb1-a973-d500c3fba412_grande.webp" id="2_m4dws"]
+[ext_resource type="Texture2D" uid="uid://bujv5usigledm" path="res://Images/old/ramen.png" id="2_q5a3l"]
+[ext_resource type="Texture2D" uid="uid://cssuvh3qhd18h" path="res://Images/old/prepared_ramen.png" id="3_q57ya"]
+
+[node name="Ramen" type="Node2D"]
+script = ExtResource("1_v6hmt")
+foodName = "Ramen"
+calories = 200
+price = 2
+nutrition = 20
+cookLimit = 4
+icon = ExtResource("2_q5a3l")
+cookedImage1 = ExtResource("3_q57ya")
+cookedImage2 = ExtResource("2_m4dws")
+cookedImage3 = ExtResource("2_m4dws")
+cookedImage4 = ExtResource("2_m4dws")

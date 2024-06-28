@@ -1,19 +1,19 @@
 [gd_scene load_steps=5 format=3 uid="uid://bc7odmq7fi3ud"]
 
 [ext_resource type="Script" path="res://Scripts/Food.gd" id="1_yjhdw"]
-[ext_resource type="Texture2D" uid="uid://b83t1caljcjcg" path="res://Images/weiner.png" id="2_rqxjy"]
-[ext_resource type="Texture2D" uid="uid://6e253ja6l1e5" path="res://Images/prepared_weiner.png" id="3_68m5w"]
-[ext_resource type="Texture2D" uid="uid://bhk733wd0vspl" path="res://Images/weiner.jpg" id="4_502nr"]
+[ext_resource type="Texture2D" uid="uid://mrrrve3tr1gk" path="res://Images/Prepared_Broccoli-Photoroom.png" id="2_dlw2p"]
+[ext_resource type="Texture2D" uid="uid://cawnvu2wkfj6c" path="res://Images/Broccoli-Photoroom.png" id="2_vbp40"]
+[ext_resource type="Texture2D" uid="uid://bhk733wd0vspl" path="res://Images/old/weiner.jpg" id="4_l3la7"]
 
 [node name="Broccoli" type="Node2D"]
 script = ExtResource("1_yjhdw")
 foodName = "Broccoli"
 calories = 100
-price = 2
-nutrition = 30
+price = 3
+nutrition = 60
 cookLimit = 4
-icon = ExtResource("2_rqxjy")
-cookedImage1 = ExtResource("3_68m5w")
-cookedImage2 = ExtResource("4_502nr")
-cookedImage3 = ExtResource("4_502nr")
-cookedImage4 = ExtResource("4_502nr")
+icon = ExtResource("2_vbp40")
+cookedImage1 = ExtResource("2_dlw2p")
+cookedImage2 = ExtResource("4_l3la7")
+cookedImage3 = ExtResource("4_l3la7")
+cookedImage4 = ExtResource("4_l3la7")

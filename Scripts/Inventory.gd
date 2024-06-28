@@ -20,3 +20,9 @@ func _on_food_added(value):
 	value.reparent(food)
 	food.texture_normal = value.icon
 	food.foodName = value.foodName
+	
+	var cals = food.get_node("Calories")
+	cals.text = str(value.calories) + ' cals'
+	
+	var nutrition = food.get_node("Nutrition")
+	nutrition.text = str(value.nutrition) + ' nutrients'

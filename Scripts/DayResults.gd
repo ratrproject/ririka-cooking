@@ -5,6 +5,7 @@
 extends Control
 
 signal day_advanced
+@export var box : Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -22,7 +23,7 @@ func _open():
 	
 	var ririka = get_node_or_null ('/root/Base/Main/Ririka')
 	var label = get_node('Label')
-	label.text = 'DAY ' + str(ririka.currentDay)
+	label.text = 'DAY ' + str(ririka.currentDay+1)
 	
 	var calories = 0
 	var nutrition = 0
@@ -41,7 +42,26 @@ func _open():
 	
 	calorieTotal.text = str(calories)
 	nutritionTotal.text = str(nutrition)
-	healthTotal.text = str(ririka.health)
+	healthTotal.text = str(int(ririka.health))
+	
+	var day = (ririka.currentDay % 7) + 1;
+	var dayObject = get_node_or_null ('DayGrid/' + str(day));
+	box.reparent(dayObject)
+	box.set_position(Vector2(-6.5, 0))
+	
+	var wage = get_node_or_null ('Wage')
+	if day == 7:
+		wage.visible = true
+		var wageLoss = ririka.wageDecrease * (int((ririka.currentDay + 1) / 7) - 1)
+		var money = ririka.startingWage - wageLoss
+		wage.text = '+$' + str(money)
+		pass
+	else:
+		wage.visible = false
+	
+	
+	var audio = get_node("AudioStreamPlayer2D")
+	audio.play()
 	
 func _close():
 	self.visible = false

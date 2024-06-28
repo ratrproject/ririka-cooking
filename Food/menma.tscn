@@ -1,19 +1,19 @@
 [gd_scene load_steps=5 format=3 uid="uid://c63twb5aduxsw"]
 
 [ext_resource type="Script" path="res://Scripts/Food.gd" id="1_s6q07"]
-[ext_resource type="Texture2D" uid="uid://b83t1caljcjcg" path="res://Images/weiner.png" id="2_cs4ne"]
-[ext_resource type="Texture2D" uid="uid://6e253ja6l1e5" path="res://Images/prepared_weiner.png" id="3_inauw"]
-[ext_resource type="Texture2D" uid="uid://bhk733wd0vspl" path="res://Images/weiner.jpg" id="4_paupd"]
+[ext_resource type="Texture2D" uid="uid://ddun1uptufn4e" path="res://Images/Menma-Photoroom.png" id="2_lev6j"]
+[ext_resource type="Texture2D" uid="uid://bhk733wd0vspl" path="res://Images/old/weiner.jpg" id="3_cog1g"]
+[ext_resource type="Texture2D" uid="uid://bmh5oc2bpn6g6" path="res://Images/Prepared_Menma-Photoroom.png" id="3_spvid"]
 
 [node name="Menma" type="Node2D"]
 script = ExtResource("1_s6q07")
 foodName = "Menma"
-calories = 100
-price = 2
-nutrition = 30
+calories = 300
+price = 3
+nutrition = 50
 cookLimit = 4
-icon = ExtResource("2_cs4ne")
-cookedImage1 = ExtResource("3_inauw")
-cookedImage2 = ExtResource("4_paupd")
-cookedImage3 = ExtResource("4_paupd")
-cookedImage4 = ExtResource("4_paupd")
+icon = ExtResource("2_lev6j")
+cookedImage1 = ExtResource("3_spvid")
+cookedImage2 = ExtResource("3_cog1g")
+cookedImage3 = ExtResource("3_cog1g")
+cookedImage4 = ExtResource("3_cog1g")

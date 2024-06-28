@@ -1,19 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://48kvdvhhgf3b"]
+[gd_scene load_steps=5 format=3 uid="uid://csm01aa8j4eer"]
 
-[ext_resource type="Script" path="res://Scripts/Food.gd" id="1_m4y18"]
-[ext_resource type="Texture2D" uid="uid://bb5jdn48gn6ss" path="res://Images/prepared_egg.png" id="2_341rv"]
-[ext_resource type="Texture2D" uid="uid://ca6u4rxa7ejy2" path="res://Images/eggs.png" id="3_o1272"]
-[ext_resource type="Texture2D" uid="uid://dkihd2wgwdheg" path="res://Images/Miso-US_d2a24340-a68e-4bb1-a973-d500c3fba412_grande.webp" id="4_l5tsi"]
+[ext_resource type="Script" path="res://Scripts/Food.gd" id="1_o7afl"]
+[ext_resource type="Texture2D" uid="uid://d1wtqbykeaxug" path="res://Images/Prepared_Raw_Egg-Photoroom.png" id="2_d4h6i"]
+[ext_resource type="Texture2D" uid="uid://c8cycku3o5ei2" path="res://Images/Raw_Egg-Photoroom.png" id="3_6kynh"]
+[ext_resource type="Texture2D" uid="uid://dkihd2wgwdheg" path="res://Images/old/Miso-US_d2a24340-a68e-4bb1-a973-d500c3fba412_grande.webp" id="4_kyu67"]
 
 [node name="Egg" type="Node2D"]
-script = ExtResource("1_m4y18")
+script = ExtResource("1_o7afl")
 foodName = "Egg"
-calories = 100
+calories = 200
 price = 1
 nutrition = 30
 cookLimit = 4
-icon = ExtResource("2_341rv")
-cookedImage1 = ExtResource("3_o1272")
-cookedImage2 = ExtResource("4_l5tsi")
-cookedImage3 = ExtResource("4_l5tsi")
-cookedImage4 = ExtResource("4_l5tsi")
+icon = ExtResource("3_6kynh")
+cookedImage1 = ExtResource("2_d4h6i")
+cookedImage2 = ExtResource("4_kyu67")
+cookedImage3 = ExtResource("4_kyu67")
+cookedImage4 = ExtResource("4_kyu67")

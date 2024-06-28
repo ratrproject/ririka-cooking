@@ -1,19 +1,19 @@
 [gd_scene load_steps=5 format=3 uid="uid://dnr7iqyakyfw4"]
 
 [ext_resource type="Script" path="res://Scripts/Food.gd" id="1_xdgwt"]
-[ext_resource type="Texture2D" uid="uid://b83t1caljcjcg" path="res://Images/weiner.png" id="2_s4ndr"]
-[ext_resource type="Texture2D" uid="uid://6e253ja6l1e5" path="res://Images/prepared_weiner.png" id="3_uwn70"]
-[ext_resource type="Texture2D" uid="uid://bhk733wd0vspl" path="res://Images/weiner.jpg" id="4_1fkm3"]
+[ext_resource type="Texture2D" uid="uid://drg7yli1ei1j7" path="res://Images/Karaage-Photoroom.png" id="2_nbr86"]
+[ext_resource type="Texture2D" uid="uid://bhk733wd0vspl" path="res://Images/old/weiner.jpg" id="3_l1p7d"]
+[ext_resource type="Texture2D" uid="uid://ctumclyld6fd8" path="res://Images/Prepared_Karaage-Photoroom.png" id="3_vqqiv"]
 
 [node name="Karaage" type="Node2D"]
 script = ExtResource("1_xdgwt")
 foodName = "Karaage"
-calories = 100
-price = 2
-nutrition = 30
+calories = 600
+price = 4
+nutrition = 10
 cookLimit = 4
-icon = ExtResource("2_s4ndr")
-cookedImage1 = ExtResource("3_uwn70")
-cookedImage2 = ExtResource("4_1fkm3")
-cookedImage3 = ExtResource("4_1fkm3")
-cookedImage4 = ExtResource("4_1fkm3")
+icon = ExtResource("2_nbr86")
+cookedImage1 = ExtResource("3_vqqiv")
+cookedImage2 = ExtResource("3_l1p7d")
+cookedImage3 = ExtResource("3_l1p7d")
+cookedImage4 = ExtResource("3_l1p7d")

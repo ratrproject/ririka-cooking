@@ -1,19 +1,19 @@
 [gd_scene load_steps=5 format=3 uid="uid://b0bkolmemovnh"]
 
 [ext_resource type="Script" path="res://Scripts/Food.gd" id="1_hv52k"]
-[ext_resource type="Texture2D" uid="uid://b83t1caljcjcg" path="res://Images/weiner.png" id="2_titdc"]
-[ext_resource type="Texture2D" uid="uid://6e253ja6l1e5" path="res://Images/prepared_weiner.png" id="3_f1gr7"]
-[ext_resource type="Texture2D" uid="uid://bhk733wd0vspl" path="res://Images/weiner.jpg" id="4_n0hm4"]
+[ext_resource type="Texture2D" uid="uid://7yspb2oe827l" path="res://Images/Harissa-Photoroom.png" id="2_6de63"]
+[ext_resource type="Texture2D" uid="uid://bhk733wd0vspl" path="res://Images/old/weiner.jpg" id="3_4eela"]
+[ext_resource type="Texture2D" uid="uid://bb4p3jep0yekj" path="res://Images/Prepared_Harissa-Photoroom.png" id="3_ebr2t"]
 
 [node name="Harissa" type="Node2D"]
 script = ExtResource("1_hv52k")
 foodName = "Harissa"
-calories = 100
-price = 2
-nutrition = 30
+calories = 50
+price = 1
+nutrition = 40
 cookLimit = 4
-icon = ExtResource("2_titdc")
-cookedImage1 = ExtResource("3_f1gr7")
-cookedImage2 = ExtResource("4_n0hm4")
-cookedImage3 = ExtResource("4_n0hm4")
-cookedImage4 = ExtResource("4_n0hm4")
+icon = ExtResource("2_6de63")
+cookedImage1 = ExtResource("3_ebr2t")
+cookedImage2 = ExtResource("3_4eela")
+cookedImage3 = ExtResource("3_4eela")
+cookedImage4 = ExtResource("3_4eela")

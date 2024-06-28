@@ -15,7 +15,7 @@ func _ready():
 func _process(delta):
 	var ririka = get_node_or_null ('/root/Base/Main/Ririka')
 	var label = get_node('/root/Base/ShopMenu/MoneyLabel')
-	label.text = '$ ' + str(ririka.money)
+	label.text = '$' + str(ririka.money)
 
 
 func _shop_reset():
@@ -30,34 +30,40 @@ func _shop_reset():
 			var rn = randi_range(0,20)
 			var food_item = null;
 			match rn:
-				1,14,15:
+				1,14,15,20:
 					food_item = preload("res://Food/weiner.tscn")
-				2,18:
-					food_item = preload("res://Food/egg.tscn")
-				3:
+#				2,18:
+#					food_item = preload("res://Food/egg.tscn")
+				2,3:
 					food_item = preload("res://Food/brocolli.tscn")
-				4:
+				0,4:
 					food_item = preload("res://Food/cabbage.tscn")
-				5:
-					food_item = preload("res://Food/chicken.tscn")
-				6,16,17:
+#				5:
+#					food_item = preload("res://Food/chicken.tscn")
+				6:
 					food_item = preload("res://Food/expired-weiner.tscn")
-				7:
+				7,17:
 					food_item = preload("res://Food/hardboiled-egg.tscn")
-				8:
+				18:
+					food_item = preload("res://Food/egg.tscn")
+				8,5:
 					food_item = preload("res://Food/harissa.tscn")
-				9:
+				9,16:
 					food_item = preload("res://Food/karaage.tscn")
 				10:
 					food_item = preload("res://Food/menma.tscn")
 				11,19:
-					food_item = preload("res://Food/rice.tscn")
-				12:
-					food_item = preload("res://Food/tako.tscn")
-				13:
-					food_item = preload("res://Food/tuna.tscn")
-				_:
-					food_item = preload("res://Food/ramen.tscn")
+					food_item = preload("res://Food/cheese.tscn")
+				12,13:
+					food_item = preload("res://Food/scallion.tscn")
+#				11,19:
+#					food_item = preload("res://Food/rice.tscn")
+#				12:
+#					food_item = preload("res://Food/tako.tscn")
+#				13:
+#					food_item = preload("res://Food/tuna.tscn")
+#				_:
+#					food_item = preload("res://Food/ramen.tscn")
 		
 			var shop_obj = shop_item.instantiate()
 			var food = food_item.instantiate()
@@ -70,6 +76,12 @@ func _shop_reset():
 			
 			var label = shop_obj.get_node("Label")
 			label.text = '$ ' + str(food.price)
+			
+			var cals = shop_obj.get_node("Calories")
+			cals.text = str(food.calories) + ' cals'
+			
+			var nutrition = shop_obj.get_node("Nutrition")
+			nutrition.text = str(food.nutrition) + ' nutrients'
 
 func _open():
 	self.visible = true

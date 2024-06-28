@@ -1,0 +1,464 @@
+[gd_scene load_steps=16 format=3 uid="uid://cvmrrmkcgae66"]
+
+[ext_resource type="Texture2D" uid="uid://qydjboejtdv2" path="res://Images/GIOVzqfbQAA8foQ.jpg" id="1_rwtpx"]
+[ext_resource type="Script" path="res://Scripts/Inventory.gd" id="2_g28te"]
+[ext_resource type="Texture2D" uid="uid://d2k773cfl7etx" path="res://Images/old/Ichijou_Ririka_Full_Body_2.webp" id="3_wj6pf"]
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="4_nwwjx"]
+[ext_resource type="Texture2D" uid="uid://uwxevn00oih6" path="res://Images/Serving_Plate-Photoroom.png" id="6_2j7ke"]
+[ext_resource type="Script" path="res://Scripts/Bowl.gd" id="6_3dy5y"]
+[ext_resource type="AudioStream" uid="uid://cleliyn8ktbsb" path="res://Sound/537709__kostas17__wooden-object-place.wav" id="7_w707a"]
+[ext_resource type="Script" path="res://Scripts/DayResults.gd" id="8_e3w6x"]
+[ext_resource type="Script" path="res://Scripts/Death.gd" id="9_2qen0"]
+[ext_resource type="Script" path="res://Scripts/ShopMenu.gd" id="9_dv73i"]
+[ext_resource type="AudioStream" uid="uid://dbppibev8njl2" path="res://Sound/411170__silverillusionist__eating.wav" id="10_dfyeh"]
+[ext_resource type="AudioStream" uid="uid://y226xbi4svsf" path="res://Sound/とある日常.mp3" id="10_nerx5"]
+
+[sub_resource type="Gradient" id="Gradient_ea5xk"]
+offsets = PackedFloat32Array(0, 0.994012, 1)
+colors = PackedColorArray(0.282353, 0.282353, 0.282353, 1, 0.282353, 0.282353, 0.282353, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_38btl"]
+gradient = SubResource("Gradient_ea5xk")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p6syu"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+
+[node name="Base" type="Node2D"]
+metadata/_edit_vertical_guides_ = [-3036.0]
+
+[node name="Main" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="Main"]
+editor_draw_limits = true
+
+[node name="Background" type="Sprite2D" parent="Main/Camera2D"]
+position = Vector2(-65, -42)
+scale = Vector2(2.134, 2.134)
+texture = ExtResource("1_rwtpx")
+
+[node name="Inventory" type="Node2D" parent="Main"]
+position = Vector2(-1116, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Main/Inventory"]
+position = Vector2(349, -87)
+scale = Vector2(2.63256, 1371.36)
+texture = SubResource("GradientTexture1D_38btl")
+
+[node name="Inventory" type="GridContainer" parent="Main/Inventory"]
+visible = false
+offset_left = 264.0
+offset_top = -555.0
+offset_right = 264.0
+offset_bottom = -555.0
+theme_override_constants/v_separation = 10
+columns = 3
+script = ExtResource("2_g28te")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Main/Inventory"]
+custom_minimum_size = Vector2(100, 100)
+offset_left = 207.16
+offset_top = -485.0
+offset_right = 672.004
+offset_bottom = 465.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="Inventory" type="GridContainer" parent="Main/Inventory/ScrollContainer"]
+custom_minimum_size = Vector2(400, 500)
+layout_mode = 2
+theme_override_constants/h_separation = 35
+theme_override_constants/v_separation = 65
+columns = 3
+script = ExtResource("2_g28te")
+
+[node name="Ririka" type="Sprite2D" parent="Main"]
+position = Vector2(624, 938)
+scale = Vector2(1.62107, 1.62107)
+texture = ExtResource("3_wj6pf")
+script = ExtResource("4_nwwjx")
+money = 50
+startingWage = 50
+neededCalories = 750
+overEatCalories = 1250
+hungerHealthDrain = 0.05
+overEatHealthDrain = 0.05
+
+[node name="Bowl" type="Node2D" parent="Main"]
+position = Vector2(18, -34)
+script = ExtResource("6_3dy5y")
+
+[node name="BowlImage" type="Sprite2D" parent="Main/Bowl"]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("6_2j7ke")
+
+[node name="BowlContents" type="Control" parent="Main/Bowl"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Main/Bowl"]
+scale = Vector2(1.5, 1.5)
+stream = ExtResource("7_w707a")
+volume_db = -10.575
+
+[node name="Calories" type="Label" parent="Main/Bowl"]
+offset_left = 526.0
+offset_top = -148.0
+offset_right = 698.0
+offset_bottom = -57.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 64
+text = "0 calories
+"
+vertical_alignment = 1
+
+[node name="Nutrition" type="Label" parent="Main/Bowl"]
+offset_left = 526.0
+offset_top = -63.0
+offset_right = 865.0
+offset_bottom = 28.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 64
+text = "0 nutrients"
+vertical_alignment = 1
+
+[node name="EatButton" type="Button" parent="Main"]
+offset_left = 547.0
+offset_top = -294.0
+offset_right = 878.0
+offset_bottom = -214.0
+theme_override_font_sizes/font_size = 50
+text = "Eat"
+
+[node name="ShopButton" type="Button" parent="Main"]
+offset_left = 547.0
+offset_top = -425.0
+offset_right = 878.0
+offset_bottom = -345.0
+theme_override_font_sizes/font_size = 50
+text = "Shop"
+
+[node name="ShopMenu" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("9_dv73i")
+
+[node name="ColorRect" type="ColorRect" parent="ShopMenu"]
+clip_contents = true
+layout_mode = 0
+offset_left = -1263.0
+offset_top = -571.0
+offset_right = -1223.0
+offset_bottom = -531.0
+scale = Vector2(62.4061, 30.3733)
+
+[node name="Label" type="Label" parent="ShopMenu"]
+layout_mode = 0
+offset_left = -266.0
+offset_top = -489.0
+offset_right = 274.0
+offset_bottom = -213.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 200
+text = "SHOP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MoneyLabel" type="Label" parent="ShopMenu"]
+layout_mode = 0
+offset_left = 353.0
+offset_top = -463.0
+offset_right = 893.0
+offset_bottom = -187.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "$$$"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ShopCloseButton" type="Button" parent="ShopMenu"]
+layout_mode = 0
+offset_left = -943.0
+offset_top = -471.0
+offset_right = -612.0
+offset_bottom = -391.0
+theme_override_font_sizes/font_size = 50
+text = "Back"
+
+[node name="Inventory" type="GridContainer" parent="ShopMenu"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 0
+offset_left = -869.0
+offset_top = -200.0
+offset_right = -569.0
+offset_bottom = -72.0
+scale = Vector2(5.77639, 5.77639)
+theme_override_constants/h_separation = 25
+theme_override_constants/v_separation = 20
+columns = 5
+script = ExtResource("9_dv73i")
+
+[node name="DayResults" type="Control" parent="." node_paths=PackedStringArray("box")]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("8_e3w6x")
+box = NodePath("DayGrid/1/Box")
+
+[node name="ColorRect" type="ColorRect" parent="DayResults"]
+clip_contents = true
+layout_mode = 0
+offset_left = -1263.0
+offset_top = -571.0
+offset_right = -1223.0
+offset_bottom = -531.0
+scale = Vector2(62.4061, 30.3733)
+
+[node name="ColorRect2" type="ColorRect" parent="DayResults"]
+clip_contents = true
+layout_mode = 0
+offset_left = -546.0
+offset_top = -29.0
+offset_right = -506.0
+offset_bottom = 11.0
+scale = Vector2(25.1178, -0.306396)
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="DayResults"]
+layout_mode = 0
+offset_left = -473.0
+offset_top = -521.0
+offset_right = 392.0
+offset_bottom = -245.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 200
+text = "DAY END"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Summary" type="GridContainer" parent="DayResults"]
+layout_mode = 0
+offset_left = -378.0
+offset_top = -264.0
+offset_right = 522.0
+offset_bottom = 83.0
+theme_override_constants/h_separation = 100
+theme_override_constants/v_separation = 0
+columns = 2
+
+[node name="Calories" type="Label" parent="DayResults/Summary"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "Calories"
+vertical_alignment = 1
+
+[node name="CaloriesTotal" type="Label" parent="DayResults/Summary"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "100"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Nutrition" type="Label" parent="DayResults/Summary"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "Nutrition"
+vertical_alignment = 1
+
+[node name="NutritionTotal" type="Label" parent="DayResults/Summary"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "100"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Health" type="Label" parent="DayResults/Summary"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 80
+text = "Health"
+vertical_alignment = 1
+
+[node name="HealthTotal" type="Label" parent="DayResults/Summary"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 80
+text = "100"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="NewDayButton" type="Button" parent="DayResults"]
+layout_mode = 0
+offset_left = -177.0
+offset_top = 369.0
+offset_right = 154.0
+offset_bottom = 449.0
+theme_override_font_sizes/font_size = 50
+text = "Next Day"
+
+[node name="DayGrid" type="GridContainer" parent="DayResults"]
+layout_mode = 0
+offset_left = -350.0
+offset_top = 161.0
+offset_right = 321.0
+offset_bottom = 241.0
+theme_override_constants/h_separation = 30
+columns = 7
+
+[node name="1" type="Label" parent="DayResults/DayGrid"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 56
+text = "Su"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Box" type="Panel" parent="DayResults/DayGrid/1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.5
+offset_top = -40.0
+offset_right = 56.5
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_p6syu")
+
+[node name="2" type="Label" parent="DayResults/DayGrid"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 56
+text = "Mo"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="3" type="Label" parent="DayResults/DayGrid"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 56
+text = "Tu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="4" type="Label" parent="DayResults/DayGrid"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 56
+text = "We"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="5" type="Label" parent="DayResults/DayGrid"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 56
+text = "Th"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="6" type="Label" parent="DayResults/DayGrid"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 56
+text = "Fr"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="7" type="Label" parent="DayResults/DayGrid"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 56
+text = "Sa"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="DayResults"]
+stream = ExtResource("10_dfyeh")
+
+[node name="Death" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("9_2qen0")
+
+[node name="ColorRect3" type="ColorRect" parent="Death"]
+clip_contents = true
+layout_mode = 0
+offset_left = -1263.0
+offset_top = -571.0
+offset_right = -1223.0
+offset_bottom = -531.0
+scale = Vector2(62.4061, 30.3733)
+
+[node name="Label2" type="Label" parent="Death"]
+layout_mode = 0
+offset_left = -471.0
+offset_top = -138.0
+offset_right = 394.0
+offset_bottom = 138.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 200
+text = "DEAD"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SurviveCounter" type="Label" parent="Death"]
+layout_mode = 0
+offset_left = -471.0
+offset_top = 58.0
+offset_right = 394.0
+offset_bottom = 334.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 69
+text = "SURVIVED XX DAYS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RestartButton" type="Button" parent="Death"]
+layout_mode = 0
+offset_left = -177.0
+offset_top = 369.0
+offset_right = 154.0
+offset_bottom = 449.0
+theme_override_font_sizes/font_size = 50
+text = "Restart"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_nerx5")
+volume_db = -12.503
+autoplay = true
+
+[connection signal="is_dead" from="Main/Ririka" to="Death" method="_open"]
+[connection signal="pressed" from="Main/EatButton" to="DayResults" method="_open"]
+[connection signal="pressed" from="Main/ShopButton" to="ShopMenu" method="_open"]
+[connection signal="pressed" from="ShopMenu/ShopCloseButton" to="ShopMenu" method="_close"]
+[connection signal="day_advanced" from="DayResults" to="Main/Ririka" method="_advance_day"]
+[connection signal="day_advanced" from="DayResults" to="Main/Bowl" method="_on_day_results_day_advanced"]
+[connection signal="day_advanced" from="DayResults" to="ShopMenu" method="_on_day_results_day_advanced"]
+[connection signal="pressed" from="DayResults/NewDayButton" to="DayResults" method="_close"]
+[connection signal="pressed" from="Death/RestartButton" to="Death" method="_restart"]

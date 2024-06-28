@@ -12,7 +12,10 @@ func _open():
 	var ririka = get_node_or_null ('/root/Base/Main/Ririka')
 
 	var label = get_node_or_null ('SurviveCounter')
-	label.text = 'SURVIVED ' + str(ririka.currentDay) +  ' DAYS'
+	label.text = 'SURVIVED ' + str(ririka.currentDay+1) +  ' DAYS'
+
+	var audio = get_node("AudioStreamPlayer2D")
+	audio.play()
 
 func _restart():
 	get_tree().reload_current_scene()

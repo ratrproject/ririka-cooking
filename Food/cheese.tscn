@@ -1,19 +1,19 @@
 [gd_scene load_steps=5 format=3 uid="uid://ci13dupu4bixf"]
 
 [ext_resource type="Script" path="res://Scripts/Food.gd" id="1_jab3d"]
-[ext_resource type="Texture2D" uid="uid://b83t1caljcjcg" path="res://Images/weiner.png" id="2_ww16p"]
-[ext_resource type="Texture2D" uid="uid://6e253ja6l1e5" path="res://Images/prepared_weiner.png" id="3_nh8dy"]
-[ext_resource type="Texture2D" uid="uid://bhk733wd0vspl" path="res://Images/weiner.jpg" id="4_47i35"]
+[ext_resource type="Texture2D" uid="uid://b8dor8vec3uuo" path="res://Images/Pre-Shredded_Cheddar-Photoroom.png" id="2_7mfo4"]
+[ext_resource type="Texture2D" uid="uid://fh7ee17dcmip" path="res://Images/Prepared_Cheese-Photoroom.png" id="3_g2yt5"]
+[ext_resource type="Texture2D" uid="uid://bhk733wd0vspl" path="res://Images/old/weiner.jpg" id="4_47i35"]
 
-[node name="cheese" type="Node2D"]
+[node name="Cheese" type="Node2D"]
 script = ExtResource("1_jab3d")
 foodName = "Cheese"
-calories = 100
+calories = 250
 price = 2
-nutrition = 30
+nutrition = 10
 cookLimit = 4
-icon = ExtResource("2_ww16p")
-cookedImage1 = ExtResource("3_nh8dy")
+icon = ExtResource("2_7mfo4")
+cookedImage1 = ExtResource("3_g2yt5")
 cookedImage2 = ExtResource("4_47i35")
 cookedImage3 = ExtResource("4_47i35")
 cookedImage4 = ExtResource("4_47i35")
