@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://cfs8f64qvbj1g" path="res://Images/table.png" id="1_5qcnn"]
 [ext_resource type="Texture2D" uid="uid://qydjboejtdv2" path="res://Images/GIOVzqfbQAA8foQ.jpg" id="1_rwtpx"]
 [ext_resource type="Script" path="res://Scripts/Inventory.gd" id="2_g28te"]
-[ext_resource type="Texture2D" uid="uid://d2k773cfl7etx" path="res://Images/old/Ichijou_Ririka_Full_Body_2.webp" id="3_wj6pf"]
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="4_nwwjx"]
 [ext_resource type="Texture2D" uid="uid://uwxevn00oih6" path="res://Images/Serving_Plate-Photoroom.png" id="6_2j7ke"]
 [ext_resource type="Script" path="res://Scripts/Bowl.gd" id="6_3dy5y"]
@@ -18,6 +17,7 @@
 [ext_resource type="Script" path="res://Tutorial.gd" id="12_uhx2p"]
 [ext_resource type="AudioStream" uid="uid://oq6yy33rgrp3" path="res://Sound/393666__chripei__wahi-siren-to-loop.mp3" id="13_2rx25"]
 [ext_resource type="Texture2D" uid="uid://bydkaqgxkoai0" path="res://Images/ambulancia_100x100_3.png" id="15_h40kd"]
+[ext_resource type="Texture2D" uid="uid://delc5x6fi11rq" path="res://Images/100-76-Photoroom.png" id="18_bvkw1"]
 
 [sub_resource type="Gradient" id="Gradient_lck55"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -135,9 +135,9 @@ columns = 3
 script = ExtResource("2_g28te")
 
 [node name="Ririka" type="Sprite2D" parent="Main"]
-position = Vector2(624, 938)
-scale = Vector2(1.62107, 1.62107)
-texture = ExtResource("3_wj6pf")
+position = Vector2(614, 483)
+scale = Vector2(0.941, 0.941)
+texture = ExtResource("18_bvkw1")
 script = ExtResource("4_nwwjx")
 money = 80
 startingWage = 70
@@ -565,6 +565,7 @@ offset_bottom = -531.0
 scale = Vector2(62.4061, 30.3733)
 
 [node name="TextureRect3" type="TextureRect" parent="Tutorial"]
+layout_mode = 0
 offset_left = -960.0
 offset_top = -540.0
 offset_right = 960.0
@@ -609,32 +610,35 @@ offset_bottom = 460.0
 theme_override_font_sizes/font_size = 50
 text = "Play 👩‍🍳"
 
-[node name="TextureRect" type="TextureRect" parent="Tutorial"]
-layout_mode = 0
-offset_left = -961.0
-offset_top = 101.0
-offset_right = -261.0
-offset_bottom = 1361.0
-rotation = 0.466705
-texture = ExtResource("3_wj6pf")
-
-[node name="TextureRect2" type="TextureRect" parent="Tutorial"]
-layout_mode = 0
-offset_left = 483.0
-offset_top = 99.0
-offset_right = 1183.0
-offset_bottom = 1359.0
-rotation = -0.370822
-texture = ExtResource("3_wj6pf")
-
 [node name="TextureRect4" type="TextureRect" parent="Tutorial"]
 layout_mode = 0
-offset_left = -50.0001
-offset_top = -689.0
-offset_right = 650.0
-offset_bottom = 571.0
+offset_left = -388.0
+offset_top = -660.0
+offset_right = 892.0
+offset_bottom = 620.0
 rotation = 1.9295
-texture = ExtResource("3_wj6pf")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("18_bvkw1")
+
+[node name="TextureRect5" type="TextureRect" parent="Tutorial"]
+layout_mode = 0
+offset_left = 406.0
+offset_top = 362.0
+offset_right = 1686.0
+offset_bottom = 1642.0
+rotation = -0.618443
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("18_bvkw1")
+
+[node name="TextureRect6" type="TextureRect" parent="Tutorial"]
+layout_mode = 0
+offset_left = -887.0
+offset_top = 30.0001
+offset_right = 393.0
+offset_bottom = 1310.0
+rotation = 0.684992
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("18_bvkw1")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("10_nerx5")
